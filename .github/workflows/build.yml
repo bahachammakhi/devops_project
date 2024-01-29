@@ -52,4 +52,4 @@ jobs:
             docker container rm devops-client || true
             docker pull bahachammakhi/devops-project:main
             docker run -d --name devops-client -p 3500:80 bahachammakhi/devops-project:main
-            docker image prune --filter="dangling=true"
+            docker image prune --filter="dangling=true" || true
