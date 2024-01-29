@@ -5,6 +5,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY ./client/package.json ./
 COPY client/ ./
 COPY nginx.conf ./
+RUN yarn install
 RUN yarn build
 
 # production environment
