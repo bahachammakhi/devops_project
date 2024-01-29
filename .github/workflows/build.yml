@@ -41,9 +41,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
       - name: Restart EC2 instances
         uses: appleboy/ssh-action@master
         with:
@@ -51,7 +48,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker pull bahachammakhi/devops-project:latest # TODO: set up the correct image
+            docker pull bahachammakhi/devops-project:main # TODO: set up the correct image
             docker stop devops-client
-            docker run --name devops-client -p 3500:80 bahachammakhi/devops-project:latest
+            docker run --name devops-client -p 3500:80 bahachammakhi/devops-project:main
             docker image prune --filter="dangling=true"
