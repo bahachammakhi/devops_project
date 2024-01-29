@@ -49,6 +49,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             docker pull bahachammakhi/devops-project:main # TODO: set up the correct image
-            docker stop devops-client
             docker run --name devops-client -p 3500:80 bahachammakhi/devops-project:main
             docker image prune --filter="dangling=true"
